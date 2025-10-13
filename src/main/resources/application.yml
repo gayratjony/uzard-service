@@ -1,0 +1,27 @@
+server:
+  port: 8081
+
+
+spring:
+  application:
+    name: Uzcard-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/uzcard_service
+    username: itpu
+    password: 123
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update # Ehtiyojingizga qarab "validate", "create", "create-drop" yoki "update" tanlang
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    kafka:
+      bootstrap-servers: localhost:9092
+      consumer:
+        group-id: your_consumer_group
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      producer:
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.apache.kafka.common.serialization.StringSerializer
